@@ -1,0 +1,15 @@
+.dp
+{
+    height: 3rem;
+    width: 3rem;
+}
+
+.post{
+    box-shadow: 0 0 2rem black;
+}
+
+.postimg{
+    object-fit:'contain';
+    max-height:40rem;
+    max-width:100%;
+}
