@@ -1,7 +1,21 @@
+import {Accordion,Card,Button} from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart as filledheart } from '@fortawesome/free-solid-svg-icons'
+import { faHeart as emptydheart } from '@fortawesome/free-regular-svg-icons'
+import Comment from './Comment'
 export default function Post({username,dp,img,caption,likes})
 {
-    return <div className="card col-6 p-0 my-5 post">
-        <div className="card-header">
+    const commentslist = [
+      {username:"laksh",comment:"hey",dp:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeN0QFLTRhSZW2cbqMh_PWb_TBSuqjZ5Gv4Q&usqp=CAU"},
+      {dp:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4jYFXdVooszBgHKsDFCtWruhsIUF9x-iJsw&usqp=CAU",username:"shan",comment:"hello"}
+    ]
+    const comments = commentslist.map((item)=><Comment dp={item.dp} username={item.username} comment={item.comment}></Comment>)
+
+
+    return <>
+    <div className="card  col-6 p-0 my-5 post">
+      
+        <div className="card-header secondary">
             <div className="row">
                 <div className="col-1">
                 <img className="rounded-circle dp" src={dp}></img>
@@ -15,21 +29,51 @@ export default function Post({username,dp,img,caption,likes})
         <div className="justify-content-center d-flex bg-dark">
             <img className="postimg"  src={img}></img>
         </div>
-        <div className="card-body">
-            <p className="card-text">likes: <h6 style={{display:"inline"}}>{likes}</h6></p>
-            <p className="card-text">{caption}</p>
+        <div className="card-body secondary">
+          
+            <FontAwesomeIcon icon={filledheart}/>
+            <p style={{display:'inline'}} className="card-text">&emsp; likes: <h6 style={{display:"inline"}}>{likes}</h6></p>
+            <p className="card-text font-weight-bold">{caption}</p>
         </div>
-        <div class="accordion" id="accordionExample">
-        <div className="accordion-item">
-    <h2 className="accordion-header" id="flush-headingThree">
-      <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-        Accordion Item #3
-      </button>
-    </h2>
-    <div id="flush-collapseThree" className="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-      <div className="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+        <Accordion className='secondary'>
+          <Accordion.Item className='secondary' eventKey='0'>
+            <Accordion.Header>
+              <h6>Comments</h6>
+            </Accordion.Header>
+            <Accordion.Body>
+                {comments}
+            </Accordion.Body>
+          </Accordion.Item>
+          </Accordion>
+          
+      {/* <Accordion defaultActiveKey="0">
+
+<Card>
+  <Card.Header>
+    <Accordion.Toggle as={Button} variant="link" eventKey="0">
+      Panel 1
+    </Accordion.Toggle>
+  </Card.Header>
+
+  <Accordion.Collapse eventKey="0">
+    <Card.Body>Body content for panel 1</Card.Body>
+  </Accordion.Collapse>
+</Card>
+
+<Card>
+  <Card.Header>
+    <Accordion.Toggle as={Button} variant="link" eventKey="1">
+      Panel 2
+    </Accordion.Toggle>
+  </Card.Header>
+
+  <Accordion.Collapse eventKey="1">
+    <Card.Body>Body content for panel 2</Card.Body>
+  </Accordion.Collapse>
+</Card>
+
+</Accordion> */}
+        
     </div>
-  </div>
-  </div>
-    </div>
+    </>
 }

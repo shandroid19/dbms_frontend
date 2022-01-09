@@ -2,14 +2,42 @@
 {
     height: 3rem;
     width: 3rem;
+    object-fit: cover;
 }
 
-.post{
-    box-shadow: 0 0 2rem black;
+.sameline
+{
+    display:inline;
 }
+
+.dropdown-toggle:after {
+    display: none !important; 
+  }
+
+.post{
+    
+    border-color:#fff;
+    box-shadow: 0 0 2rem #9cfff5,
+                0 0 0.5rem #fff;
+}
+
+.profilepic
+{
+    width: 7rem;
+    height: 7rem;
+}
+
+.secondary{
+    background-color: #ffd666 !important;
+}
+
 
 .postimg{
     object-fit:'contain';
     max-height:40rem;
     max-width:100%;
+}
+
+.background{
+    background-color: #04002b;
 }
