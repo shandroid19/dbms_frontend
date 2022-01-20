@@ -16,9 +16,9 @@
 
 .post{
     
-    border-color:#fff;
+    /* border-color:#fff;
     box-shadow: 0 0 2rem #9cfff5,
-                0 0 0.5rem #fff;
+                0 0 0.5rem #fff; */
 }
 
 .profilepic
@@ -28,8 +28,10 @@
 }
 
 .secondary{
-    background-color: #ffd666 !important;
+    /* background-color: #ffd666 !important; */
+    background-color: #00ccfa !important;
 }
+
 
 
 .postimg{
@@ -39,5 +41,40 @@
 }
 
 .background{
-    background-color: #04002b;
+    background-color: #062442;
+}
+
+@keyframes pulsating {
+    0%{
+        box-shadow:  0 0 0.5rem #fff,
+                    0 0 1rem #fff,
+                    0 0 0.2rem #fff,
+                     0 0 0.2rem #66e8ff,
+                    0 0  0.8rem #66e8ff,
+                    0 0 2rem #66e8ff;   
+    }
+    50%{
+        box-shadow:  0 0 0.5rem #fff,
+                    0 0 1rem #fff,
+                    0 0 0.2rem #fff,
+                     0 0 0.2rem #66e8ff,
+                    0 0 1rem #66e8ff,
+                    0 0 3rem #66e8ff;   
+    }
+    
+}
+
+.card{
+    border-color:#fff;
+    box-shadow:  0 0 0.5rem #fff,
+    0 0 1rem #fff,
+    0 0 0.2rem #fff,
+     0 0 0.2rem #66e8ff,
+    0 0  0.8rem #66e8ff,
+    0 0 2rem #66e8ff;
+    animation-name: pulsating;
+    animation-duration: 4s; 
+    animation-iteration-count: infinite;                  
+
+                
 }

@@ -1,5 +1,6 @@
 import { useState,useRef, useEffect } from 'react'
 import {Form} from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 var axios = require('axios')
 export default function Signup()
 {
@@ -57,7 +58,6 @@ export default function Signup()
             setvalid(true)
         else
             setvalid(false)
-        console.log(valid,status,!taken)
     },[trigger])
 
     function onsubmit()
@@ -66,6 +66,7 @@ export default function Signup()
             username:username.current.value,
             name:firstname.current.value+" "+lastname.current.value,
             bio:bio.current.value,
+            dp:'https://www.iconpacks.net/icons/2/free-user-icon-3296-thumb.png',
             place:place.current.value,
             password:password.current.value,
             private:isSwitchOn
@@ -75,7 +76,7 @@ export default function Signup()
                 localStorage.setItem('token',response.data.token)  
             })
     }
-
+    const navigate = useNavigate();
     return (
         <div className="card col-md-6 p-5 m-5 secondary">
             <div className="container">
@@ -167,6 +168,11 @@ export default function Signup()
                     <div className="row d-flex justify-content-center mb-3">
                     <div className="col-6 d-flex justify-content-center">
                     <button disabled={!valid} onClick={onsubmit} className="btn btn-primary">Sign up</button>
+                    </div>
+                    </div>
+                    <div className="row d-flex justify-content-center">
+                    <div className="col-12 d-flex justify-content-center">
+                        <p>Alreadt have an account?</p><a onClick={()=>navigate('/login')}>Login</a>
                     </div>
                     </div>
 

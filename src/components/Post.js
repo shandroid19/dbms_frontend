@@ -9,7 +9,7 @@ export default function Post({username,dp,img,caption,likes})
       {username:"laksh",comment:"hey",dp:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQeN0QFLTRhSZW2cbqMh_PWb_TBSuqjZ5Gv4Q&usqp=CAU"},
       {dp:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4jYFXdVooszBgHKsDFCtWruhsIUF9x-iJsw&usqp=CAU",username:"shan",comment:"hello"}
     ]
-    const comments = commentslist.map((item)=><Comment dp={item.dp} username={item.username} comment={item.comment}></Comment>)
+    const comments = commentslist.map((item,key)=><Comment key={key} dp={item.dp} username={item.username} comment={item.comment}></Comment>)
 
 
     return <>

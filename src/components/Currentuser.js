@@ -1,15 +1,28 @@
 import { useState } from "react"
+const axios  = require('axios')
 export default function Current({username,bio,dp,place,followers,following})
 {
-    const [edit,setedit] = useState(true)
-    return <div className='card p-5 col-8 secondary'>
+    const [edit,setedit] = useState(false)
+    const ondelete = ()=>{
+        const token = localStorage.getItem('token')
+        axios.post('http://localhost:8000/auth/delete',{},{
+          headers:{
+              'x-access-token':token
+          }
+      }).then((response)=>{
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        window.location.reload();
+      })
+    }
+    return <div className='card p-5 m-5 col-sm-8 secondary'>
         {!edit?
         (<div className='container'>
             <div className='row'>
-                <div className='col-2 d-flex align-items-center'>
+                <div className='col-4 d-flex align-items-center'>
                     <img className='profilepic rounded-circle' src={dp}></img>
                 </div>
-                <div className='col-5'>
+                <div className='col-sm-5'>
                     <h5>{username}</h5>
                     <h6>{place}</h6>
                     Followers: <h6 className='sameline'>{followers}</h6>&emsp;Following: <h6 className='sameline'>{following}</h6>
@@ -22,10 +35,10 @@ export default function Current({username,bio,dp,place,followers,following})
         :
         (<div className='container'>
             <div className='row'>
-                <div className='col-2 d-flex align-items-center'>
+                <div className='col-sm-4  d-flex align-items-center'>
                     <img className='profilepic rounded-circle' src={dp}></img>
                 </div>
-                <div className='col-5'>
+                <div className='col-sm-5'>
                     <h5>{username}</h5>
                     <div className='row'>
                         <div className='col-4'>                    
@@ -50,7 +63,7 @@ export default function Current({username,bio,dp,place,followers,following})
                     <br/>
                     <div><button className='btn col-4 btn-outline-success'>Save</button>&emsp;
                         <button onClick={()=>setedit(false)} className='btn col-4 btn-outline-danger'>Cancel</button> </div>
-                        <br/><a href='#'>delete account</a>
+                        <br/><a >delete account</a>
                 </div>
             </div>
         </div>)}
