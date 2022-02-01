@@ -1,6 +1,7 @@
 import {Dropdown } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
+import TimeAgo from 'timeago-react';
 export default function NotificationMenu({list}){
     
 
@@ -34,6 +35,10 @@ export default function NotificationMenu({list}){
             <img className='notifydp rounded-circle' 
             src={item.dp}>
                 </img>&emsp;{dict[item.type]}
+                <div style={{fontSize:'0.75rem',display:'inline'}} className='m-2'><TimeAgo
+                  datetime={item.created_at}
+                locale='en_US'
+                /></div>
             </Dropdown.Item>
     })
 

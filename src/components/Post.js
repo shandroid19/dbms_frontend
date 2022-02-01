@@ -9,8 +9,8 @@ import { useEffect, useState,useContext,useRef } from 'react'
 import axios from 'axios'
 import { usercontext } from '../App'
 import {  useNavigate } from 'react-router-dom'
-
-export default function Post({single,username,dp,img,caption,postid})
+import TimeAgo from 'timeago-react';
+export default function Post({single,username,dp,img,caption,postid,created_at})
 {
 
   const [show, setShow] = useState(false);
@@ -28,7 +28,6 @@ export default function Post({single,username,dp,img,caption,postid})
     const [showlikes, setShowlikes] = useState(false);
     const [likeslist,setlikeslist] = useState([])
     const handleCloselikes = () => setShowlikes(false);
- 
     const handleShowlikes = () => {
         setShowlikes(true);
         axios.get(`http://localhost:8000/posts/post/${postid}/likes`,{
@@ -123,7 +122,6 @@ const del = ()=>{
     },[])
 
     return <>
-
     
 <Modal show={showlikes} onHide={handleCloselikes}>
         <Modal.Header className="secondary" closeButton>
@@ -155,7 +153,8 @@ const del = ()=>{
                 <img className="rounded-circle dp" src={dp}></img>
                 </div>
                 <div className="col-9 d-flex align-items-center flex-start">
-                <h6 onClick={()=>navigate(`/user/${username}`)} className="card-title">{username}</h6>
+                <h6 onClick={()=>navigate(`/user/${username}`)} >{username}</h6>
+
                 </div>  
                 {context.user.username===username?<div className="col-1 align-items-center d-flex">
               <a onClick={handleShow}>
@@ -173,7 +172,11 @@ const del = ()=>{
           
             <a onClick={like}>{hasliked?<FontAwesomeIcon style={{color:'red'}} icon={filledheart} size={'lg'}/>:<FontAwesomeIcon icon={emptyheart} size={'lg'}/>}</a>
             <a  onClick={handleShowlikes} style={{display:'inline',textDecoration:'none',color:'black'}} className="card-text secondary">&emsp; likes: <h6 style={{display:"inline"}}>{lnumber}</h6></a>
-            <p className="card-text font-weight-bold">{caption}</p>
+            <h6 className="card-text font-weight-bold">{caption}</h6>
+            <div style={{fontSize:'0.75rem'}}><TimeAgo
+                  datetime={created_at}
+                locale='en_US'
+                /></div>
         </div>
  
 

@@ -27,7 +27,7 @@ export default function Feed({list})
             setTimeout(()=>{setloading(false);},3000)
         }
     })
-    const posts = list?.map((item)=>{return (<div key={item.postid} className='row d-flex justify-content-center'><Post  single={false} postid={item.postid} username={item.username} dp={item.dp} img={item.img}
+    const posts = list?.map((item)=>{ return (<div key={item.postid} className='row d-flex justify-content-center'><Post  single={false} postid={item.postid} username={item.username} created_at={item.created_at} dp={item.dp} img={item.img}
      caption={item.caption}/></div>)})
     return (
         <>

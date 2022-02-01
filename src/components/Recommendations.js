@@ -75,7 +75,7 @@ export default function Recommendations(){
     return(<div data-aos='fade-right' className=" secondary card p-2 mt-5" >
         <h4 className='m-3'>Suggestions</h4>
         <div className="container">
-        {list}
+        {list?.length?list:<p>No Suggestions</p>}
         </div>
     </div>)
 }

@@ -189,8 +189,8 @@ const navigate = useNavigate()
     <Dropdown.Toggle style={{display:"none"}} as={NotificationToggle} id="dropdown-custom-components">
         
     </Dropdown.Toggle>
-    <Dropdown.Menu >
-      <NotificationMenu list={notificationlist}/>
+    <Dropdown.Menu style={{overflowY:'scroll',maxHeight:'30rem'}} >
+      <NotificationMenu  list={notificationlist}/>
       <Dropdown.Item >
         {notificationlist.length?<div className='row d-flex justify-content-center'>
           <div className='col-8'>
