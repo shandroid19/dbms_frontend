@@ -1,8 +1,12 @@
 import {Dropdown } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
 export default function UserList({list}){
-    return list.map((item,key)=>{
-        return <Dropdown.Item eventKey={key}><img className='dp rounded-circle' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4jYFXdVooszBgHKsDFCtWruhsIUF9x-iJsw&usqp=CAU'></img>&emsp;{item}</Dropdown.Item>
+    const navigate = useNavigate()
+
+    const result = list.map((item,key)=>{
+        return <Dropdown.Item key={key} onClick={()=>{navigate(`/user/${item.username}`)}} eventKey={key}><img className='userdp rounded-circle' src={item.dp}></img>&emsp;{item.username}</Dropdown.Item>
     })
+    return list?.length!=0?result: <Dropdown.Item >No matches found</Dropdown.Item>
 
 }
 

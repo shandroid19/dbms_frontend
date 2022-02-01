@@ -16,14 +16,13 @@ export default function Login()
         const token = localStorage.getItem('token')
         if(token)
         {
-            axios.post('http://localhost:8000/auth/verify',{},{
+            axios.post('http://localhost:8000/auth/verify',{},{ 
                 headers:{
                     'x-access-token':token
                 }
             }).then((res)=>{
                 if(res.status===200)
                 {
-                    console.log(res.data.auth)
                     if(res.data.auth)
                     {
                         context.setuser(JSON.parse(localStorage.getItem('user')))
@@ -34,6 +33,9 @@ export default function Login()
                     localStorage.removeItem('token')
                     localStorage.removeItem('user')
                 }
+            }).catch((err)=>{
+                localStorage.removeItem('token')
+                localStorage.removeItem('user')
             })
         }
     },[])
@@ -45,7 +47,6 @@ export default function Login()
         }).then((response)=>{
             if(response.status===200)
             {
-                console.log(response.data.auth)
                 if(response.data.auth)
                     {
                         localStorage.setItem('token',response.data.token)
